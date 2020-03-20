@@ -19,9 +19,19 @@ Shard- Sharding is a way to divide an index into peices. Each peice is called sh
 USe split and shrink API to add or reduce the number of shared.
 Replication - copies of shard. Copy is not maintained on same node.
 Nodes Types (or Roles) - master, data, injest, machine learning, coordination
+Adpative Replica Selection - ES select one of the shared from shard group ( primary or replica) to handle requests.
+
+ES retain version number of deleted document for  60 sec. Version number is incremented if you upload a document with same id within 60 seconds. Otherwise it reset version number to 1.
+Version is not used for optimistic locking. Primary term and sequence_no is used for optimistic locking.
+
+Batch processing  (/products/_bulk) - operations allowed a) index b)create c) update d) delete  
+index - create or update document. It always succees
+create - fails if document already exist
+
+
 ```
 
-##Getting Started
+## Getting Started
 
 ```
 inspecting-the-cluster.md
@@ -32,10 +42,22 @@ adding-more-nodes-to-the-cluster-for-development.md
 overview-of-node-roles.md
 ```
 
-##
+## Managing Documents
 
 ```
-
+creating-and-deleting-indices.md
+indexing-documents.md
+retrieving-documents-by-id.md
+updating-documents.md
+scripted-updates.md
+upserts.md
+replacing-documents.md
+deleting-documents.md
+optimistic-concurrency-control.md
+update-by-query.md
+delete-by-query.md
+batch-processing.md
+importing-data-with-curl.md
 ```
 
 ##
@@ -106,19 +128,6 @@ Joining Queries\querying-child-documents-by-parent.md
 Joining Queries\querying-nested-objects.md
 Joining Queries\querying-parent-by-child-documents.md
 Joining Queries\terms-lookup-mechanism.md
-Managing Documents\batch-processing.md
-Managing Documents\creating-and-deleting-indices.md
-Managing Documents\delete-by-query.md
-Managing Documents\deleting-documents.md
-Managing Documents\importing-data-with-curl.md
-Managing Documents\indexing-documents.md
-Managing Documents\optimistic-concurrency-control.md
-Managing Documents\replacing-documents.md
-Managing Documents\retrieving-documents-by-id.md
-Managing Documents\scripted-updates.md
-Managing Documents\update-by-query.md
-Managing Documents\updating-documents.md
-Managing Documents\upserts.md
 Mapping\adding-mappings-to-existing-indices.md
 Mapping\adding-multi-fields-mappings.md
 Mapping\changing-existing-mappings.md
