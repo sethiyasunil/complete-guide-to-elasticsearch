@@ -1,9 +1,9 @@
+# readme
 This repository contains all of the queries used within the [Complete Guide to Elasticsearch course](https://l.codingexplained.com/course/elasticsearch?src=github).
 
 
-# readme
-
 ## key terms
+
 ```
 Elastic Stack
 Kibana: Visualization platform for elastic search.
@@ -22,6 +22,7 @@ Nodes Types (or Roles) - master, data, injest, machine learning, coordination
 ```
 
 ##Getting Started
+
 ```
 inspecting-the-cluster.md
 sending-queries-with-curl.md
@@ -32,8 +33,14 @@ overview-of-node-roles.md
 ```
 
 ##
+
 ```
 
+```
+
+##
+
+```
 ```
 
 ##
@@ -41,10 +48,7 @@ overview-of-node-roles.md
 ```
 
 ##
-```
-```
 
-##
 ```
 ```
 
