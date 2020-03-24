@@ -39,7 +39,7 @@ GET /order/_search
   "aggs": {
     "status_terms": {
       "terms": {
-        "field": "status"
+        "field": "status.keyword"
       },
       "aggs": {
         "status_stats": {

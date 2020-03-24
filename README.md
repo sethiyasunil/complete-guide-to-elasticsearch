@@ -29,6 +29,33 @@ index - create or update document. It always succees
 create - fails if document already exist
 
 
+Fields : _index, _id, _source, _version,
+
+
+dynamic - true,false,strict
+	true - enable dynamic mapping
+	false - new fields are ignored
+	strict - ES throw an exception when see unknown field.
+	
+	
+Analyser - Character Token filters  + 	Tokeniser + Token Filters
+Character filters -e.g. html_strip, pattern_replace
+Tokeniser e.g. standardtokeniser, letter tokeniser, lowercase tokeniser, whitespacetokeiser, ngram tokeniser
+Token Filters: standard (does nothing), uppercase, stopwords, word_dlimiter ( e.g. WiFi, wi-Fi), stemmer ( running to run), synonyms
+Analyser -
+e.g. simple, stop, pattern, whitespace, standard
+
+standard analyzer comprises of  * No character token filter + Standardard Tokeniser + standard token filter
+Standardard Tokeniser removes simples (e.g. -) and tokenise with whitespaces.
+standard token filter  comprises of lowercase token filter + stopwords token filter
+
+
+query context /filter context : Query context effect reqults score. Filter context doesn't effect context score.
+
+
+proximity-searches : search words with 'match_phrase clause and slop. It search words even if other words are in between them(proximity).
+"fuzziness": "auto" : search even when typo in input.
+
 ```
 
 ## Getting Started
@@ -60,87 +87,132 @@ batch-processing.md
 importing-data-with-curl.md
 ```
 
-##
+## Mapping
 
 ```
+dynamic-mapping.md
+adding-mappings-to-existing-indices.md
+changing-existing-mappings.md
+adding-multi-fields-mappings.md
+defining-custom-date-formats.md
+picking-up-new-fields-without-dynamic-mapping.md
 ```
 
-##
-```
-```
-
-##
+## Analysis & Analyzers
 
 ```
+using-the-analyze-api.md
+configuring-built-in-analyzers.md
+creating-custom-analyzers.md
+using-analyzers-in-mappings.md
+```
+
+## Introduction to Searching
+
+```
+searching-with-the-request-uri.md
+introducing-the-query-dsl.md
+understanding-relevance-scores.md
+debugging-unexpected-query-results.md
+full-text-queries-vs-term-level-queries.md
+
+```
+
+## Term Level Queries
+
+```
+searching-for-a-term.md
+searching-for-multiple-terms.md
+retrieving-documents-based-on-ids.md
+matching-documents-with-range-values.md
+working-with-relative-dates.md
+matching-documents-with-non-null-values.md
+matching-based-on-prefixes.md
+searching-with-wildcards.md
+searching-with-regular-expressions.md
+exercises.md
+```
+
+## Full Text Queries
+
+```
+introduction-to-full-text-queries.md
+flexible-matching-with-match-query.md
+matching-phrases.md
+searching-multiple-fields.md
+exercises.md
+```
+
+## Adding Boolean Logic to Queries
+
+```
+debugging-bool-queries-with-named-queries.md
+how-the-match-query-works.md
+querying-with-boolean-logic.md
+```
+
+## Joining Queries
+
+```
+querying-nested-objects.md
+nested-inner-hits.md
+mapping-document-relationships.md
+adding-documents.md
+querying-by-parent-id.md
+querying-child-documents-by-parent.md
+querying-parent-by-child-documents.md
+multi-level-relations.md
+parent-child-inner-hits.md
+terms-lookup-mechanism.md
+```
+
+## Controlling Query Results
+
+```
+specifying-the-result-format.md
+source-filtering.md
+specifying-the-result-size.md
+specifying-an-offset.md
+sorting-results.md
+sorting-by-multi-value-fields.md
+filters.md
+```
+
+##  Aggregations
+
+```
+introduction-to-aggregations.md
+metric-aggregations.md
+introduction-to-bucket-aggregations.md
+nested-aggregations.md
+filtering-out-documents.md
+defining-bucket-rules-with-filters.md
+range-aggregations.md
+histograms.md
+global-aggregation.md
+missing-field-values.md
+aggregating-nested-objects.md
+
+
+```
+
+## Improving Search Results
+
+```
+proximity-searches.md
+affecting-relevance-scoring-with-proximity.md
+fuzzy-match-query.md
+fuzzy-query.md
+adding-synonyms.md
+adding-synonyms-from-file.md
+highlighting-matches-in-fields.md
+stemming.md
 ```
 
 
-Adding Boolean Logic to Queries\debugging-bool-queries-with-named-queries.md
-Adding Boolean Logic to Queries\how-the-match-query-works.md
-Adding Boolean Logic to Queries\querying-with-boolean-logic.md
-Aggregations\aggregating-nested-objects.md
-Aggregations\defining-bucket-rules-with-filters.md
-Aggregations\filtering-out-documents.md
-Aggregations\global-aggregation.md
-Aggregations\histograms.md
-Aggregations\introduction-to-aggregations.md
-Aggregations\introduction-to-bucket-aggregations.md
-Aggregations\metric-aggregations.md
-Aggregations\missing-field-values.md
-Aggregations\nested-aggregations.md
-Aggregations\range-aggregations.md
-Analysis & Analyzers\configuring-built-in-analyzers.md
-Analysis & Analyzers\creating-custom-analyzers.md
-Analysis & Analyzers\using-analyzers-in-mappings.md
-Analysis & Analyzers\using-the-analyze-api.md
-Controlling Query Results\filters.md
-Controlling Query Results\sorting-by-multi-value-fields.md
-Controlling Query Results\sorting-results.md
-Controlling Query Results\source-filtering.md
-Controlling Query Results\specifying-an-offset.md
-Controlling Query Results\specifying-the-result-format.md
-Controlling Query Results\specifying-the-result-size.md
-Full Text Queries\exercises.md
-Full Text Queries\flexible-matching-with-match-query.md
-Full Text Queries\introduction-to-full-text-queries.md
-Full Text Queries\matching-phrases.md
-Full Text Queries\searching-multiple-fields.md
-Improving Search Results\adding-synonyms-from-file.md
-Improving Search Results\adding-synonyms.md
-Improving Search Results\affecting-relevance-scoring-with-proximity.md
-Improving Search Results\fuzzy-match-query.md
-Improving Search Results\fuzzy-query.md
-Improving Search Results\highlighting-matches-in-fields.md
-Improving Search Results\proximity-searches.md
-Improving Search Results\stemming.md
-Introduction to Searching\debugging-unexpected-query-results.md
-Introduction to Searching\full-text-queries-vs-term-level-queries.md
-Introduction to Searching\introducing-the-query-dsl.md
-Introduction to Searching\searching-with-the-request-uri.md
-Introduction to Searching\understanding-relevance-scores.md
-Joining Queries\adding-documents.md
-Joining Queries\mapping-document-relationships.md
-Joining Queries\multi-level-relations.md
-Joining Queries\nested-inner-hits.md
-Joining Queries\parent-child-inner-hits.md
-Joining Queries\querying-by-parent-id.md
-Joining Queries\querying-child-documents-by-parent.md
-Joining Queries\querying-nested-objects.md
-Joining Queries\querying-parent-by-child-documents.md
-Joining Queries\terms-lookup-mechanism.md
-Mapping\adding-mappings-to-existing-indices.md
-Mapping\adding-multi-fields-mappings.md
-Mapping\changing-existing-mappings.md
-Mapping\defining-custom-date-formats.md
-Mapping\dynamic-mapping.md
-Mapping\picking-up-new-fields-without-dynamic-mapping.md
-Term Level Queries\exercises.md
-Term Level Queries\matching-based-on-prefixes.md
-Term Level Queries\matching-documents-with-non-null-values.md
-Term Level Queries\matching-documents-with-range-values.md
-Term Level Queries\retrieving-documents-based-on-ids.md
-Term Level Queries\searching-for-a-term.md
-Term Level Queries\searching-for-multiple-terms.md
-Term Level Queries\searching-with-regular-expressions.md
-Term Level Queries\searching-with-wildcards.md
-Term Level Queries\working-with-relative-dates.md
+
+
+
+
+
+
